@@ -5,6 +5,5 @@ fun max(first: Int, second: Int) : Int {
 }
 
 fun max(first: Int, second: Int, third: Int) : Int {
-    val greatest = max(first, second)
-    return if (greatest > third) greatest else third
+    return max(max(first, second), third)
 }

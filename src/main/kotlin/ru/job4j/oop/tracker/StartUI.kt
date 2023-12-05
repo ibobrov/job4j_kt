@@ -6,19 +6,17 @@ import ru.job4j.oop.tracker.action.Exit
 import ru.job4j.oop.tracker.action.ShowAll
 import ru.job4j.oop.tracker.io.ConsoleInput
 import ru.job4j.oop.tracker.io.ConsoleOutput
-import ru.job4j.oop.tracker.io.Input
-import ru.job4j.oop.tracker.io.Output
 
 object StartUI {
-    private val tracker : Tracker = Tracker()
-    private val input : Input = ConsoleInput()
-    private val out : Output = ConsoleOutput()
+    private val tracker = Tracker()
+    private val input = ConsoleInput()
+    private val out = ConsoleOutput()
 
     fun init() {
         val actions : List<Action> = listOf(Add(), ShowAll(), Exit())
         do {
             for (i in actions.indices) {
-                out.show("${i + 1}. " + actions[i].getName())
+                out.show("${i + 1}. ${actions[i].getName()}")
             }
         } while (actions[input.askInt() - 1].execute(tracker, input, out))
     }

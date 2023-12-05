@@ -23,9 +23,8 @@ class SimpleLinkedList<T> : SimpleList<T> {
     }
 
     override fun contains(element: T): Boolean {
-        val iterator = iterator()
-        for (e in iterator) {
-            if (e?.equals(element) == true) {
+        for (e in this) {
+            if (e == element) {
                 return true
             }
         }

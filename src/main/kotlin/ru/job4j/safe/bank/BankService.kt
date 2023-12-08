@@ -18,8 +18,7 @@ class BankService {
     }
 
     fun addAccount(passport: String?, account: Account?) {
-        val user: User = findByPassport(passport) ?: return
-        users[user]!!.add(account)
+        findByPassport(passport).let { users[it]?.add(account) }
     }
 
     fun findByPassport(passport: String?): User? {
@@ -37,10 +36,10 @@ class BankService {
     ): Boolean {
         val source = findByRequisite(srcPassport, srcRequisite)
         val dest = findByRequisite(destPassport, descRequisite)
-        val rsl = source != null && dest != null
+        val rsl = source != null && dest != null && source.balance > amount
         if (rsl) {
-            source?.balance = source!!.balance - amount
-            dest?.balance = dest!!.balance + amount
+            source?.let { it.balance -= - amount }
+            dest?.let { it.balance += amount }
         }
         return rsl
     }

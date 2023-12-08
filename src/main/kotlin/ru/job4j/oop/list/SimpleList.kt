@@ -1,6 +1,6 @@
 package ru.job4j.oop.list
 
-interface SimpleList<T> : Iterable<T> {
+interface SimpleList<T> : ListIterable<T> {
 
     fun add(element: T): Boolean
 

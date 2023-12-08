@@ -88,4 +88,43 @@ class SimpleLinkedListTest {
         assertThat(iterator.next()).isEqualTo("third")
         assertThat(iterator.hasNext()).isFalse()
     }
+
+    @Test
+    fun whenCallNextOrPrevIndexListIterator() {
+        add3elem()
+        val iterator = list.listIterator()
+
+        assertThat(iterator.hasNext()).isTrue()
+        assertThat(iterator.nextIndex()).isEqualTo(0)
+        assertThat(iterator.previousIndex()).isEqualTo(-1)
+        assertThat(iterator.next()).isEqualTo("root")
+
+        assertThat(iterator.hasNext()).isTrue()
+        assertThat(iterator.next()).isEqualTo("second")
+
+        assertThat(iterator.hasNext()).isTrue()
+        assertThat(iterator.nextIndex()).isEqualTo(2)
+        assertThat(iterator.previousIndex()).isEqualTo(0)
+        assertThat(iterator.next()).isEqualTo("third")
+        assertThat(iterator.nextIndex()).isEqualTo(-1)
+        assertThat(iterator.hasNext()).isFalse()
+    }
+    @Test
+    fun whenCallNextAndPrevToHeadListIterator() {
+        add3elem()
+        val iterator = list.listIterator()
+
+        assertThat(iterator.next()).isEqualTo("root")
+        assertThat(iterator.next()).isEqualTo("second")
+        assertThat(iterator.next()).isEqualTo("third")
+        assertThat(iterator.hasNext()).isFalse()
+
+        assertThat(iterator.hasPrevious()).isTrue()
+        assertThat(iterator.previous()).isEqualTo("second")
+        assertThat(iterator.hasPrevious()).isTrue()
+        assertThat(iterator.previousIndex()).isEqualTo(0)
+        assertThat(iterator.previous()).isEqualTo("root")
+        assertThat(iterator.previousIndex()).isEqualTo(-1)
+        assertThat(iterator.hasPrevious()).isFalse()
+    }
 }

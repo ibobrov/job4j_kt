@@ -4,7 +4,7 @@ class SimpleLinkedList<T> : SimpleList<T> {
     private var head : Node<T>? = null
     private var tail : Node<T>? = null
 
-    class Node<K>(val value: K, var next: Node<K>? = null)
+    class Node<K>(val value: K, var next: Node<K>? = null, var prev: Node<K>? = null)
 
     override fun add(element: T): Boolean {
         val node = Node(element)
@@ -12,6 +12,7 @@ class SimpleLinkedList<T> : SimpleList<T> {
             head = node
             tail = node
         } else {
+            node.prev = tail
             tail?.next = node
             tail = node
         }
@@ -47,7 +48,11 @@ class SimpleLinkedList<T> : SimpleList<T> {
     }
 
     override fun iterator(): Iterator<T> {
-        return LinkedIt()
+        return listIterator()
+    }
+
+    override fun listIterator(): ListIterator<T> {
+        return LinkedListIt()
     }
 
     private fun findByIndex(index : Int): Node<T> {
@@ -59,20 +64,48 @@ class SimpleLinkedList<T> : SimpleList<T> {
         return node ?: throw IndexOutOfBoundsException()
     }
 
-    inner class LinkedIt : Iterator<T> {
-        private var currNode = head
+    inner class LinkedListIt : ListIterator<T> {
+        private var prevNode: Node<T>? = null
+        private var currNode: Node<T>? = null
+        private var nextNode = head
+        private var index = -1
 
         override fun hasNext(): Boolean {
-            return currNode != null
+            return nextNode != null
+        }
+
+        override fun hasPrevious(): Boolean {
+            return prevNode != null
         }
 
         override fun next(): T {
             if (!hasNext()) {
                 throw NoSuchElementException()
             }
-            val rsl = currNode
-            currNode = currNode?.next
-            return rsl!!.value
+            prevNode = currNode
+            currNode = nextNode
+            nextNode = currNode?.next
+            index++
+            return currNode?.value!!
+        }
+
+        override fun nextIndex(): Int {
+            return if (nextNode == null) -1 else index + 1
+        }
+
+        override fun previous(): T {
+            if (!hasPrevious()) {
+                throw NoSuchElementException()
+            }
+            nextNode = currNode
+            currNode = prevNode
+            prevNode = currNode?.prev
+            index--
+            return currNode?.value!!
+        }
+
+        override fun previousIndex(): Int {
+            return if (prevNode == null) -1 else index - 1
         }
     }
 }

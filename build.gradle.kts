@@ -15,9 +15,12 @@ repositories {
 }
 
 dependencies {
+    implementation("org.postgresql:postgresql:42.6.0")
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
     testImplementation("org.assertj:assertj-core:3.24.2")
+    testImplementation("org.testcontainers:junit-jupiter:1.18.3")
+    testImplementation("org.testcontainers:postgresql:1.17.3")
 }
 
 tasks.test {

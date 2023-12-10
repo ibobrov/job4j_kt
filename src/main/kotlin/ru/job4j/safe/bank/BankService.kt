@@ -1,7 +1,9 @@
 package ru.job4j.safe.bank
 
+import kotlin.jvm.optionals.getOrNull
+
 class BankService {
-    private val users: HashMap<User, ArrayList<Account?>> = HashMap()
+    private val users = HashMap<User, ArrayList<Account?>>()
 
     fun addUser(user: User) {
         users.putIfAbsent(user, ArrayList())
@@ -10,9 +12,7 @@ class BankService {
     private fun findByRequisite(passport: String?, requisite: String?): Account? {
         val user: User = findByPassport(passport) ?: return null
         return users[user]!!.stream()
-            .filter { account: Account? ->
-                account?.requisite == requisite
-            }
+            .filter { it?.requisite == requisite }
             .findFirst()
             .orElse(null)
     }
@@ -22,12 +22,10 @@ class BankService {
     }
 
     fun findByPassport(passport: String?): User? {
-        for (user in users.keys) {
-            if (user.passport == passport) {
-                return user
-            }
-        }
-        return null
+        return users.keys.stream()
+            .filter { it.passport == passport }
+            .findFirst()
+            .getOrNull()
     }
 
     fun transferMoney(

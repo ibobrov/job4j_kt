@@ -2,13 +2,16 @@ package ru.job4j.safe
 
 import java.util.Date
 
-class Stock (val name: String, val currency: String, val date: Date) {
+class Stock (val name: String, val currency: String, val date: Date?) {
 
     override fun equals(other: Any?): Boolean {
+        if (other == null) {
+            return false
+        }
         if (this === other) {
             return true
         }
-        if (javaClass != other?.javaClass) {
+        if (javaClass != other.javaClass) {
             return false
         }
         other as Stock

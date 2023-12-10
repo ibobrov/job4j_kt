@@ -16,9 +16,9 @@ class PurchaseTest {
         )
         assertThat(getHtmlTable(list)).isEqualTo(
             "<table>" +
-                    "<tr><th>Игрушки</th><th>$date</th><th>325734, Central st, 1</th></tr>" +
-                    "<tr><th>Полотенца</th><th>$date</th><th>325634, Green st, 35</th></tr>" +
-                    "<tr><th>Футболки</th><th>$date</th><th>325631, High st, 105</th></tr>" +
+                    "<tr><th>Игрушки</th><th>$date</th><th>Central st</th></tr>" +
+                    "<tr><th>Полотенца</th><th>$date</th><th>Green st</th></tr>" +
+                    "<tr><th>Футболки</th><th>$date</th><th>High st</th></tr>" +
                     "</table>"
         )
     }
@@ -29,6 +29,19 @@ class PurchaseTest {
         val list = listOf(Purchase("Футболки", date, null))
         assertThat(getHtmlTable(list)).isEqualTo(
             "<table><tr><th>Футболки</th><th>$date</th><th></th></tr></table>"
+        )
+    }
+
+    @Test
+    fun whenGetTableWithElmWithAddressButStreetIsNull() {
+        val date = Date()
+        val list = listOf(
+            Purchase("Футболки", date, Address(null, "105", "325631"))
+        )
+        assertThat(getHtmlTable(list)).isEqualTo(
+            "<table>" +
+                    "<tr><th>Футболки</th><th>$date</th><th></th></tr>" +
+                    "</table>"
         )
     }
 }

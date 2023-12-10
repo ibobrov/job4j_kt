@@ -4,7 +4,7 @@ import java.util.*
 
 class Purchase(val name: String, val created: Date, val address: Address?)
 
-class Address(private val street : String, private val home: String, private val zip : String) {
+class Address(val street : String?, val home: String, private val zip : String) {
 
     override fun toString(): String {
         return "$zip, $street, $home"
@@ -18,7 +18,7 @@ fun getHtmlTable(list : List<Purchase>) : String {
             append("<tr>")
             append("<th>${purchase.name}</th>")
             append("<th>${purchase.created}</th>")
-            append("<th>${purchase.address ?: ""}</th>")
+            append("<th>${purchase.address?.street ?: ""}</th>")
             append("</tr>")
         }
         append("</table>")
@@ -29,6 +29,7 @@ fun main() {
     val list = listOf(
         Purchase("Игрушки", Date(), Address("Central st", "1", "325734")),
         Purchase("Полотенца", Date(), Address("Green st", "35", "325634")),
+        Purchase("Полотенца", Date(), Address(null, "35", "325634")),
         Purchase("Футболки", Date(), null)
     )
     println(getHtmlTable(list))

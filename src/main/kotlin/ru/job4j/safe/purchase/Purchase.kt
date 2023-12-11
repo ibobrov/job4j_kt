@@ -4,14 +4,14 @@ import java.util.*
 
 class Purchase(val name: String, val created: Date, val address: Address?)
 
-class Address(val street : String?, val home: String, private val zip : String) {
+class Address(val street: String?, val home: String, private val zip: String) {
 
     override fun toString(): String {
         return "$zip, $street, $home"
     }
 }
 
-fun getHtmlTable(list : List<Purchase>) : String {
+fun getHtmlTable(list: List<Purchase>): String {
     return with(StringBuilder()) {
         append("<table>")
         for (purchase in list) {

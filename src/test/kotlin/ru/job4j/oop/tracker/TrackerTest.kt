@@ -20,7 +20,7 @@ class TrackerTest {
         val second = Item("Second")
         tracker.add(first)
         tracker.add(second)
-        val result: Item = tracker.findAll().get(0)
+        val result: Item = tracker.findAll()[0]
         assertThat(result.name).isEqualTo(first.name)
     }
 

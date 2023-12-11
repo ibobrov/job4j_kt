@@ -37,7 +37,7 @@ class BankService {
         if (source != null && dest != null && source.balance > amount) {
             return false
         }
-        source?.let { it.balance -= - amount }
+        source?.let { it.balance -= amount }
         dest?.let { it.balance += amount }
         return true
     }

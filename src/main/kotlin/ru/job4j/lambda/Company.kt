@@ -4,16 +4,18 @@ import java.util.*
 
 data class Company(val name: String, val address: Address, val created: Date)
 
-data class Address(val city : String, val street : String, val house : String)
+data class Address(val city: String, val street: String, val house: String)
 
-fun toStringAll(companies : List<Company>) : List<String> {
-    return companies.map { "${it.name} company," +
-            " ${"${it.address.city} ${it.address.street} ${it.address.house}"}" +
-            " founded ${it.created}"}
+fun toStringAll(companies: List<Company>): List<String> {
+    return companies.map {
+        "${it.name} company," +
+                " ${"${it.address.city} ${it.address.street} ${it.address.house}"}" +
+                " founded ${it.created}"
+    }
 }
 
 fun main() {
-    val companies : List<Company> = listOf(
+    val companies: List<Company> = listOf(
         Company(
             "Intel",
             Address("California", "Grow street", "1"),

@@ -1,8 +1,8 @@
 package ru.job4j.oop.inheritance
 
-open class Profession(private val name : String) {
+open class Profession(private val name: String) {
 
-    open fun getName() : String = name
+    open fun getName(): String = name
 
     open fun action() {
         println("$name work")
@@ -43,8 +43,8 @@ class Teacher : Profession("Teacher") {
 }
 
 fun main() {
-    val professions : List<Profession> = listOf(Doctor("Aculist"), Teacher(), Engineer())
-    professions.forEach{
+    val professions: List<Profession> = listOf(Doctor("Aculist"), Teacher(), Engineer())
+    professions.forEach {
         println(it.getName())
         it.action()
         println("")

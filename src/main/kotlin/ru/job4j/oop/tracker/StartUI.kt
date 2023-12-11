@@ -13,7 +13,7 @@ object StartUI {
     private val out = ConsoleOutput()
 
     fun init() {
-        val actions : List<Action> = listOf(Add(), ShowAll(), Exit())
+        val actions: List<Action> = listOf(Add(), ShowAll(), Exit())
         do {
             for (i in actions.indices) {
                 out.show("${i + 1}. ${actions[i].getName()}")

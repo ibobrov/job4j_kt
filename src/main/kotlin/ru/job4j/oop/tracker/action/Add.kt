@@ -11,7 +11,7 @@ class Add : Action {
         return "Добавить заявку"
     }
 
-    override fun execute(tracker: Tracker, input : Input, out : Output): Boolean {
+    override fun execute(tracker: Tracker, input: Input, out: Output): Boolean {
         out.show("Введите название заявки: ")
         val item = input.askStr()
         tracker.add(Item(item))

@@ -6,9 +6,9 @@ class HtmlTable {
         val table = StringBuilder()
         table.apply {
             append("<table>")
-            for (x in 0 until  row) {
+            for (x in 0 until row) {
                 append("<tr>")
-                for (y in 0 until  cell) {
+                for (y in 0 until cell) {
                     append("<th> </th>")
                 }
                 append("</tr>")

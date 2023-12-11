@@ -1,18 +1,18 @@
 package ru.job4j.base
 
-fun add(first : Int, second : Int) : Int {
+fun add(first: Int, second: Int): Int {
     return first + second
 }
 
-fun minus(first : Int, second : Int) : Int {
+fun minus(first: Int, second: Int): Int {
     return first - second
 }
 
-fun multiply(first : Int, second : Int) : Int {
+fun multiply(first: Int, second: Int): Int {
     return first * second
 }
 
-fun divide(first : Int, second : Int) : Int {
+fun divide(first: Int, second: Int): Int {
     return first / second
 }
 

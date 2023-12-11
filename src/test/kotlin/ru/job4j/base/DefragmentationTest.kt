@@ -9,7 +9,7 @@ class DefragmentationTest {
     fun whenAnArrayHasNullAtBetween() {
         val array = arrayOf("first", null, "second", null, "third")
         defragment(array)
-        val expected =  arrayOf("first", "second", "third", null, null)
+        val expected = arrayOf("first", "second", "third", null, null)
         assertThat(array).isEqualTo(expected)
     }
 
@@ -17,7 +17,7 @@ class DefragmentationTest {
     fun whenAnArrayHasNullAtBeginning() {
         val array = arrayOf(null, null, "first", null, "second")
         defragment(array)
-        val expected =  arrayOf("first", "second", null, null, null)
+        val expected = arrayOf("first", "second", null, null, null)
         assertThat(array).isEqualTo(expected)
     }
 
@@ -25,7 +25,7 @@ class DefragmentationTest {
     fun whenAnArrayHasNullAtEnd() {
         val array = arrayOf("second", "third", null, null, null)
         defragment(array)
-        val expected =  arrayOf("second", "third", null, null, null)
+        val expected = arrayOf("second", "third", null, null, null)
         assertThat(array).isEqualTo(expected)
     }
 }

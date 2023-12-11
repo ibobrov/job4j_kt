@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class SimpleLinkedListTest {
-    private val list : SimpleLinkedList<String> = SimpleLinkedList()
+    private val list: SimpleLinkedList<String> = SimpleLinkedList()
 
     private fun add3elem() {
         list.add("root")
@@ -109,6 +109,7 @@ class SimpleLinkedListTest {
         assertThat(iterator.nextIndex()).isEqualTo(-1)
         assertThat(iterator.hasNext()).isFalse()
     }
+
     @Test
     fun whenCallNextAndPrevToHeadListIterator() {
         add3elem()

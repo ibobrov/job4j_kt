@@ -1,8 +1,8 @@
 package ru.job4j.oop.list
 
 class SimpleLinkedList<T> : SimpleList<T> {
-    private var head : Node<T>? = null
-    private var tail : Node<T>? = null
+    private var head: Node<T>? = null
+    private var tail: Node<T>? = null
 
     class Node<K>(val value: K, var next: Node<K>? = null, var prev: Node<K>? = null)
 
@@ -55,7 +55,7 @@ class SimpleLinkedList<T> : SimpleList<T> {
         return LinkedListIt()
     }
 
-    private fun findByIndex(index : Int): Node<T> {
+    private fun findByIndex(index: Int): Node<T> {
         if (index < 0) throw IndexOutOfBoundsException()
         var node = head
         for (i in 0 until index) {

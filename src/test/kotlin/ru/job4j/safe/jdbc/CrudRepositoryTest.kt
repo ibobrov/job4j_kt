@@ -11,7 +11,8 @@ import java.util.function.Consumer
 
 class CrudRepositoryTest {
     private val postgres = PostgreSQLContainer(
-        DockerImageName.parse("postgres:13.3")).apply {
+        DockerImageName.parse("postgres:13.3")
+    ).apply {
         withDatabaseName("testDb")
         withUsername("root")
         withPassword("123456")
@@ -34,42 +35,50 @@ class CrudRepositoryTest {
 
     @Test
     fun whenAddAndFind() {
-        openConn { crudRepository -> with(crudRepository) {
-            assertThat(insert("src/main/java")).isTrue()
-            assertThat(find("src/main/java")).isEqualTo("src/main/java")
-            assertThat(find("src/main/kotlin")).isNull()
-            assertThat(insert("src/main/kotlin")).isTrue()
-            assertThat(find("src/main/kotlin")).isEqualTo("src/main/kotlin")
-        }}
+        openConn { crudRepository ->
+            with(crudRepository) {
+                assertThat(insert("src/main/java")).isTrue()
+                assertThat(find("src/main/java")).isEqualTo("src/main/java")
+                assertThat(find("src/main/kotlin")).isNull()
+                assertThat(insert("src/main/kotlin")).isTrue()
+                assertThat(find("src/main/kotlin")).isEqualTo("src/main/kotlin")
+            }
+        }
     }
 
     @Test
     fun whenAddAndFindAll() {
-        openConn { crudRepository -> with(crudRepository) {
-            assertThat(insert("src/main/java")).isTrue()
-            assertThat(insert("src/main/kotlin")).isTrue()
-            assertThat(findAll()).isEqualTo(listOf("src/main/java", "src/main/kotlin"))
-        }}
+        openConn { crudRepository ->
+            with(crudRepository) {
+                assertThat(insert("src/main/java")).isTrue()
+                assertThat(insert("src/main/kotlin")).isTrue()
+                assertThat(findAll()).isEqualTo(listOf("src/main/java", "src/main/kotlin"))
+            }
+        }
     }
 
     @Test
     fun whenAddAndUpdate() {
-        openConn { crudRepository -> with(crudRepository) {
-            assertThat(insert("src/main/java")).isTrue()
-            assertThat(insert("src/main/kotlin")).isTrue()
-            assertThat(update("src/main/java", "updated")).isTrue()
-            assertThat(findAll()).isEqualTo(listOf("src/main/kotlin", "updated"))
-        }}
+        openConn { crudRepository ->
+            with(crudRepository) {
+                assertThat(insert("src/main/java")).isTrue()
+                assertThat(insert("src/main/kotlin")).isTrue()
+                assertThat(update("src/main/java", "updated")).isTrue()
+                assertThat(findAll()).isEqualTo(listOf("src/main/kotlin", "updated"))
+            }
+        }
     }
 
     @Test
     fun whenAddAndDelete() {
-        openConn { crudRepository -> with(crudRepository) {
-            assertThat(insert("src/main/java")).isTrue()
-            assertThat(insert("src/main/kotlin")).isTrue()
-            assertThat(findAll()).isEqualTo(listOf("src/main/java", "src/main/kotlin"))
-            assertThat(delete("src/main/kotlin")).isTrue()
-            assertThat(findAll()).isEqualTo(listOf("src/main/java"))
-        }}
+        openConn { crudRepository ->
+            with(crudRepository) {
+                assertThat(insert("src/main/java")).isTrue()
+                assertThat(insert("src/main/kotlin")).isTrue()
+                assertThat(findAll()).isEqualTo(listOf("src/main/java", "src/main/kotlin"))
+                assertThat(delete("src/main/kotlin")).isTrue()
+                assertThat(findAll()).isEqualTo(listOf("src/main/java"))
+            }
+        }
     }
 }

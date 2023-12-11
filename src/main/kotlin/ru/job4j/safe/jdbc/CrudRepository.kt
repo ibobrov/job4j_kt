@@ -3,7 +3,7 @@ package ru.job4j.safe.jdbc
 import java.sql.Connection
 
 class CrudRepository : Repository<String> {
-    private lateinit var connection : Connection
+    private lateinit var connection: Connection
 
     fun init(connection: Connection) {
         this.connection = connection
@@ -15,7 +15,7 @@ class CrudRepository : Repository<String> {
         statement.executeUpdate("create table one_line(path varchar not null unique)")
     }
 
-    override fun insert(value : String): Boolean {
+    override fun insert(value: String): Boolean {
         val statement = connection.prepareStatement("insert into one_line(path) values (?)")
         statement.setString(1, value)
         return statement.executeUpdate() > 0

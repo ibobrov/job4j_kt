@@ -5,7 +5,7 @@ import java.util.stream.Collectors
 /**
  * Фильтр убирает чётные числа, map добавляет 1, коллектор складывает элементы и возвращает сумму.
  */
-fun count(list: ArrayList<Int>) : Int {
+fun count(list: ArrayList<Int>): Int {
     return list
         .stream()
         .filter { it % 2 != 0 }

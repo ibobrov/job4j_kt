@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.8.22"
     checkstyle
+    id("org.jetbrains.dokka") version "1.9.10"
 }
 
 checkstyle {

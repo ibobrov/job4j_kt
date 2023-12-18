@@ -1,11 +1,7 @@
 plugins {
     kotlin("jvm") version "1.8.22"
-    checkstyle
     id("org.jetbrains.dokka") version "1.9.10"
-}
-
-checkstyle {
-    configFile = rootProject.file("checkstyle.xml")
+    id("org.jlleitschuh.gradle.ktlint") version "12.0.3"
 }
 
 group = "ru.job4j"
@@ -23,6 +19,11 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("org.testcontainers:junit-jupiter:1.18.3")
     testImplementation("org.testcontainers:postgresql:1.17.3")
+}
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
 }
 
 tasks.test {

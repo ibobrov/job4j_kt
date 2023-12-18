@@ -7,8 +7,6 @@ infix fun Any.eq(expected: Any): AbstractBooleanAssert<*> = Assertions.assertTha
 
 infix fun Any.notEq(expected: Any): AbstractBooleanAssert<*> = Assertions.assertThat(this != expected).isTrue()
 
-infix fun <T> List<T>.contains(values: T): AbstractBooleanAssert<*> =
-    Assertions.assertThat(this.contains(values)).isTrue()
+infix fun <T> List<T>.contains(values: T): AbstractBooleanAssert<*> = Assertions.assertThat(this.contains(values)).isTrue()
 
-infix fun <T> List<T>.notContains(values: T): AbstractBooleanAssert<*> =
-    Assertions.assertThat(this.contains(values)).isFalse()
+infix fun <T> List<T>.notContains(values: T): AbstractBooleanAssert<*> = Assertions.assertThat(this.contains(values)).isFalse()

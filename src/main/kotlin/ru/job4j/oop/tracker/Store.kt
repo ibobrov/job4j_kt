@@ -1,7 +1,6 @@
 package ru.job4j.oop.tracker
 
 interface Store {
-
     fun add(item: Item): Item
 
     fun replace(id: Int, item: Item): Boolean

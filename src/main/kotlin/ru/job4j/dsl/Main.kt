@@ -3,7 +3,6 @@ package ru.job4j.dsl
 import org.apache.commons.dbcp2.BasicDataSource
 
 class DataSourceWrapper {
-
     companion object Builder {
         private val dataSource = BasicDataSource()
 
@@ -28,13 +27,14 @@ class DataSourceWrapper {
 }
 
 fun main() {
-    val pool = DataSourceWrapper
-        .driverClassName("org.postgres.Driver")
-        .url("localhost")
-        .username("postgres")
-        .password("password")
-        .minIdle(5)
-        .maxIdle(10)
-        .maxOpenPreparedStatements(100)
-        .build()
+    val pool =
+        DataSourceWrapper
+            .driverClassName("org.postgres.Driver")
+            .url("localhost")
+            .username("postgres")
+            .password("password")
+            .minIdle(5)
+            .maxIdle(10)
+            .maxOpenPreparedStatements(100)
+            .build()
 }

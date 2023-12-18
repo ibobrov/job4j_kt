@@ -1,7 +1,6 @@
 package ru.job4j.oop.list
 
 interface SimpleList<T> : ListIterable<T> {
-
     fun add(element: T): Boolean
 
     fun get(index: Int): T

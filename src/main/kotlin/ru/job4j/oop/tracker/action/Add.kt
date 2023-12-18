@@ -6,7 +6,6 @@ import ru.job4j.oop.tracker.io.Input
 import ru.job4j.oop.tracker.io.Output
 
 class Add : Action {
-
     override fun getName(): String {
         return "Добавить заявку"
     }

@@ -5,18 +5,11 @@ import ru.job4j.oop.tracker.Tracker
 
 private val tracker = Tracker()
 
-fun Item.save(): Item {
-    return tracker.add(this)
-}
+fun Item.save(): Item = tracker.add(this)
 
-fun Item.replace(item: Item): Boolean {
-    return tracker.replace(this.id, item)
-}
+fun Item.replace(item: Item): Boolean = tracker.replace(this.id, item)
 
-fun Item.delete(): Boolean {
-    return tracker.delete(this.id)
-}
-
+fun Item.delete(): Boolean = tracker.delete(this.id)
 
 fun main() {
     val item0 = Item("test").save()

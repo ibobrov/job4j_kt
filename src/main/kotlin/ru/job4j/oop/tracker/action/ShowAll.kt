@@ -5,7 +5,6 @@ import ru.job4j.oop.tracker.io.Input
 import ru.job4j.oop.tracker.io.Output
 
 class ShowAll : Action {
-
     override fun getName(): String {
         return "Показать все заявки"
     }

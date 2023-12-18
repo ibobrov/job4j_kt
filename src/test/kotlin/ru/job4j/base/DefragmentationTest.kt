@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class DefragmentationTest {
-
     @Test
     fun whenAnArrayHasNullAtBetween() {
         val array = arrayOf("first", null, "second", null, "third")

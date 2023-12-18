@@ -104,8 +104,6 @@ class SimpleLinkedList<T> : SimpleList<T> {
             return currNode?.value!!
         }
 
-        override fun previousIndex(): Int {
-            return if (prevNode == null) -1 else index - 1
-        }
+        override fun previousIndex(): Int = if (prevNode == null) -1 else index - 1
     }
 }

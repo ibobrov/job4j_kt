@@ -1,7 +1,6 @@
 package ru.job4j.lambda
 
 class HtmlTable {
-
     fun table(row: Int, cell: Int): String {
         val table = StringBuilder()
         table.apply {

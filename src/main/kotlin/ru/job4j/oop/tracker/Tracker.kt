@@ -57,9 +57,7 @@ class Tracker : Store {
         return rsl
     }
 
-    override fun findById(id: Int): Item? {
-        return items.getOrNull(id)
-    }
+    override fun findById(id: Int): Item? = items.getOrNull(id)
 
     private fun correctIds(offset: Int) {
         for (i in offset until items.size) {

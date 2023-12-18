@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class StockTest {
-
     @Test
     fun whenEqualsWithNull() {
         val o1 = Stock("str", "cur", null)

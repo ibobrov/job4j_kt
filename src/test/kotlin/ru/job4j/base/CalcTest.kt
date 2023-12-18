@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class CalcTest {
-
     @Test
     fun when2plus2() {
         assertThat(add(2, 2)).isEqualTo(4)

@@ -1,20 +1,12 @@
 package ru.job4j.base
 
-fun add(first: Int, second: Int): Int {
-    return first + second
-}
+fun add(first: Int, second: Int) = first + second
 
-fun minus(first: Int, second: Int): Int {
-    return first - second
-}
+fun minus(first: Int, second: Int) = first - second
 
-fun multiply(first: Int, second: Int): Int {
-    return first * second
-}
+fun multiply(first: Int, second: Int) = first * second
 
-fun divide(first: Int, second: Int): Int {
-    return first / second
-}
+fun divide(first: Int, second: Int) = first / second
 
 fun main() {
     println("2 + 2 = ${add(2, 2)}")

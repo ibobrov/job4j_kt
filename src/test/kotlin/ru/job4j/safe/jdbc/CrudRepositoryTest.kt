@@ -11,7 +11,7 @@ import java.util.function.Consumer
 
 class CrudRepositoryTest {
     private val postgres = PostgreSQLContainer(
-        DockerImageName.parse("postgres:13.3")
+        DockerImageName.parse("postgres:13.3"),
     ).apply {
         withDatabaseName("testDb")
         withUsername("root")

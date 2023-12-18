@@ -7,7 +7,9 @@ import java.sql.Date
 import java.sql.PreparedStatement
 import java.sql.Statement
 
-class JdbcItemStore : Store, AutoCloseable {
+class JdbcItemStore :
+    Store,
+    AutoCloseable {
     private lateinit var ds: BasicDataSource
 
     fun init(ds: BasicDataSource) {
@@ -25,7 +27,7 @@ class JdbcItemStore : Store, AutoCloseable {
                         name VARCHAR,
                         created TIMESTAMP
                     );
-                    """
+                    """,
             )
         }
     }
@@ -35,7 +37,7 @@ class JdbcItemStore : Store, AutoCloseable {
             val st =
                 it.prepareStatement(
                     "insert into items(name, created) values(?, ?)",
-                    Statement.RETURN_GENERATED_KEYS
+                    Statement.RETURN_GENERATED_KEYS,
                 )
             st.setString(1, item.name)
             st.setDate(2, Date.valueOf(item.created.toLocalDate()))
@@ -67,7 +69,7 @@ class JdbcItemStore : Store, AutoCloseable {
     }
 
     override fun findAll(): List<Item> {
-        return ds.txBackList() {
+        return ds.txBackList {
             val statement = it.prepareStatement("select * from items")
             return@txBackList statement.executeQueryBackList()
         }
@@ -90,7 +92,7 @@ class JdbcItemStore : Store, AutoCloseable {
                     rs.getString("name"),
                     rs.getInt("id"),
                     rs.getTimestamp("created").toLocalDateTime(),
-                )
+                ),
             )
         }
         return rsl
@@ -102,11 +104,12 @@ class JdbcItemStore : Store, AutoCloseable {
             statement.setInt(1, id)
             val rs = statement.executeQuery()
             if (rs.next()) {
-                val item = Item(
-                    rs.getString("name"),
-                    rs.getInt("id"),
-                    rs.getTimestamp("created").toLocalDateTime(),
-                )
+                val item =
+                    Item(
+                        rs.getString("name"),
+                        rs.getInt("id"),
+                        rs.getTimestamp("created").toLocalDateTime(),
+                    )
                 return@tx item
             } else {
                 return@tx null

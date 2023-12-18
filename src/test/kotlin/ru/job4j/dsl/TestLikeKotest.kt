@@ -7,7 +7,6 @@ import ru.job4j.extensions.notContains
 import ru.job4j.extensions.notEq
 
 class TestLikeKotest {
-
     @Test
     fun whenCheckMyJUnitExtensions() {
         "1" + "2" eq "12"

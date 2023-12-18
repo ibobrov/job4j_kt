@@ -10,9 +10,10 @@ import org.testcontainers.utility.DockerImageName
 import ru.job4j.oop.tracker.Item
 
 class JdbcItemStoreTest {
-    private var postgres: PostgreSQLContainer<*> = PostgreSQLContainer(
-        DockerImageName.parse("postgres:13.3")
-    )
+    private var postgres: PostgreSQLContainer<*> =
+        PostgreSQLContainer(
+            DockerImageName.parse("postgres:13.3"),
+        )
     private var store: JdbcItemStore = JdbcItemStore()
 
     @BeforeEach
@@ -28,7 +29,7 @@ class JdbcItemStoreTest {
                 url = postgres.jdbcUrl
                 username = postgres.username
                 password = postgres.password
-            }
+            },
         )
     }
 
@@ -107,4 +108,3 @@ class JdbcItemStoreTest {
         assertThat(store.delete(1000)).isFalse()
     }
 }
-

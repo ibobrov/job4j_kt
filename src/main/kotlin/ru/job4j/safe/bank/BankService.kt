@@ -11,7 +11,8 @@ class BankService {
 
     private fun findByRequisite(passport: String?, requisite: String?): Account? {
         val user: User = findByPassport(passport) ?: return null
-        return users[user]!!.stream()
+        return users[user]!!
+            .stream()
             .filter { it?.requisite == requisite }
             .findFirst()
             .orElse(null)
@@ -22,15 +23,20 @@ class BankService {
     }
 
     fun findByPassport(passport: String?): User? {
-        return users.keys.stream()
+        return users
+            .keys
+            .stream()
             .filter { it.passport == passport }
             .findFirst()
             .getOrNull()
     }
 
     fun transferMoney(
-        srcPassport: String?, srcRequisite: String?,
-        destPassport: String?, descRequisite: String?, amount: Double
+        srcPassport: String?,
+        srcRequisite: String?,
+        destPassport: String?,
+        descRequisite: String?,
+        amount: Double,
     ): Boolean {
         val source = findByRequisite(srcPassport, srcRequisite)
         val dest = findByRequisite(destPassport, descRequisite)

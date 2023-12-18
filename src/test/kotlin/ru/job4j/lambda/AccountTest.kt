@@ -4,12 +4,13 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class AccountTest {
-    private val list = listOf(
-        Account("Ivan", 1.2),
-        Account("Aleksandr", -1.0),
-        Account("Daria", 5.8),
-        Account("Daria", 0.4)
-    )
+    private val list =
+        listOf(
+            Account("Ivan", 1.2),
+            Account("Aleksandr", -1.0),
+            Account("Daria", 5.8),
+            Account("Daria", 0.4),
+        )
 
     @Test
     fun whenFilterByNameIsIvanAndBalanceNonPositive() {

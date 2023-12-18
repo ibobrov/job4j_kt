@@ -5,12 +5,7 @@ import ru.job4j.oop.tracker.io.Input
 import ru.job4j.oop.tracker.io.Output
 
 class Exit : Action {
+    override fun getName(): String = "Закрыть приложение"
 
-    override fun getName(): String {
-        return "Закрыть приложение"
-    }
-
-    override fun execute(tracker: Tracker, input: Input, out: Output): Boolean {
-        return false
-    }
+    override fun execute(tracker: Tracker, input: Input, out: Output): Boolean = false
 }

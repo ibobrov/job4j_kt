@@ -4,7 +4,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class MaxIntTest {
-
     @Test
     fun whenMaxFirst() {
         assertThat(max(2, 1)).isEqualTo(2)
